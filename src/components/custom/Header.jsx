@@ -1,3 +1,6 @@
+import { Linkedin, Github } from "lucide-react";
+import Link from "next/link";
+import { ThemeToggler } from "./ThemeToggler";
 export default function Header() {
   return (
     <>
@@ -6,8 +9,24 @@ export default function Header() {
           Black-Scholes Visualizer
         </h3>
         <div className="flex flex-row gap-4 justify-around items-center mr-2">
-          <div>Linkedin</div>
-          <div>Github</div>
+          <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+            Built by Michael Kim
+          </h4>
+          <Link
+            href="https://www.linkedin.com/in/michaeltk217/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Linkedin />
+          </Link>
+          <Link
+            href="https://github.com/michaelk0217/black-scholes-visualization"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Github />
+          </Link>
+          <ThemeToggler />
         </div>
       </div>
       <div className="shrink-0 bg-border h-[1px] w-full"></div>

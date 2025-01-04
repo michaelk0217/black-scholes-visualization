@@ -18,8 +18,8 @@ export default function Home() {
   const [rate, setRate] = useState(0.05); // 5%
   const [vol, setVol] = useState(0.2); // 20%
 
-  const [callPrice, setCallPrice] = useState(0);
-  const [putPrice, setPutPrice] = useState(0);
+  const [callPrice, setCallPrice] = useState(10.45);
+  const [putPrice, setPutPrice] = useState(5.57);
 
   useEffect(() => {
     setCallPrice(blackScholesCallPriceHP(spot, strike, time, rate, vol));
@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <Header />
 
-      <div className="flex flex-row justify-between items-stretch">
+      <div className="flex flex-row justify-between ">
         <div className="flex flex-row gap-4 m-4">
           <PriceCard title="Call Option Price" price={callPrice.toFixed(2)} />
           <PriceCard title="Put Option Price" price={putPrice.toFixed(2)} />
