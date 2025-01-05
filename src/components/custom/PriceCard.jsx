@@ -9,7 +9,7 @@ import {
 
 export default function PriceCard({ title, price }) {
   return (
-    <Card className="min-w-64">
+    <Card className="min-w-52 h-40">
       <CardHeader>
         <CardTitle className="text-center">{title}</CardTitle>
       </CardHeader>
