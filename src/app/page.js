@@ -6,6 +6,7 @@ import Header from "@/components/custom/Header";
 import PriceCard from "@/components/custom/PriceCard";
 import OptionInputs from "@/components/custom/OptionInputs";
 import Heatmap from "@/components/custom/Heatmap";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import {
   blackScholesCallPriceHP,
@@ -95,38 +96,63 @@ export default function Home() {
     <>
       <Header />
 
-      <div className="flex flex-row justify-between ">
-        <div className="flex flex-col gap-4 m-4 h-full">
-          <div className="flex flex-row gap-4 m-4 h-full">
-            <PriceCard title="Call Option Price" price={callPrice.toFixed(2)} />
-            <PriceCard title="Put Option Price" price={putPrice.toFixed(2)} />
-          </div>
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-evenly items-center gap-4 p-4 h-full">
+          <Card>
+            <CardHeader>
+              <CardTitle>Call Option</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4 items-center">
+              <Card className="w-1/3">
+                <CardContent>
+                  <div className="flex flex-row justify-center items-center mt-6">
+                    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+                      {callPrice.toFixed(2)}
+                    </h1>
+                  </div>
+                </CardContent>
+              </Card>
+              <Heatmap
+                data={callHeatmapData}
+                minSpot={minSpot}
+                maxSpot={maxSpot}
+                stepsSpot={stepsSpot}
+                minVol={minVol}
+                maxVol={maxVol}
+                stepsVol={stepsVol}
+                width={600}
+                height={550}
+              />
+            </CardContent>
+          </Card>
 
-          <div className="flex flex-row gap-4">
-            <Heatmap
-              data={callHeatmapData}
-              minSpot={minSpot}
-              maxSpot={maxSpot}
-              stepsSpot={stepsSpot}
-              minVol={minVol}
-              maxVol={maxVol}
-              stepsVol={stepsVol}
-              width={650}
-              height={600}
-            />
-
-            <Heatmap
-              data={putHeatmapData}
-              minSpot={minSpot}
-              maxSpot={maxSpot}
-              stepsSpot={stepsSpot}
-              minVol={minVol}
-              maxVol={maxVol}
-              stepsVol={stepsVol}
-              width={650}
-              height={600}
-            />
-          </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Put Option</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4 items-center">
+              <Card className="w-1/3">
+                <CardContent>
+                  <div className="flex flex-row justify-center items-center mt-6">
+                    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+                      {putPrice.toFixed(2)}
+                    </h1>
+                  </div>
+                </CardContent>
+              </Card>
+              <Heatmap
+                data={putHeatmapData}
+                minSpot={minSpot}
+                maxSpot={maxSpot}
+                stepsSpot={stepsSpot}
+                minVol={minVol}
+                maxVol={maxVol}
+                stepsVol={stepsVol}
+                width={600}
+                height={550}
+              />
+            </CardContent>
+          </Card>
         </div>
 
         <OptionInputs
