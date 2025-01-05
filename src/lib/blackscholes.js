@@ -122,3 +122,40 @@ export function blackScholesPutPriceHP(S, K, T, r, sigma) {
 
   return putPrice.toNumber();
 }
+
+export function generateHeatmapData({
+  minSpot,
+  maxSpot,
+  stepsSpot,
+  minVol,
+  maxVol,
+  stepsVol,
+  strike,
+  time,
+  rate,
+  blackScholesCallPrice,
+}) {
+  const data = [];
+
+  // Step sizes for each axis
+  const spotStep = (maxSpot - minSpot) / (stepsSpot - 1);
+  const volStep = (maxVol - minVol) / (stepsVol - 1);
+
+  for (let i = 0; i < stepsSpot; i++) {
+    const spot = minSpot + i * spotStep;
+
+    for (let j = 0; j < stepsVol; j++) {
+      const vol = minVol + j * volStep;
+
+      // Compute your metric—e.g. call price
+      const callPrice = blackScholesCallPrice(spot, strike, time, rate, vol);
+
+      data.push({
+        spot,
+        vol,
+        callPrice,
+      });
+    }
+  }
+  return data;
+}

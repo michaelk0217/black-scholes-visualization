@@ -1,13 +1,16 @@
-import { Linkedin, Github } from "lucide-react";
+import { Linkedin, Github, TrendingUpDown } from "lucide-react";
 import Link from "next/link";
 import { ThemeToggler } from "./ThemeToggler";
 export default function Header() {
   return (
     <>
       <div className="p-4 flex flex-row justify-between items-center">
-        <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight ml-2">
-          Black-Scholes Visualizer
-        </h3>
+        <div className="flex flex-row gap-2 items-center">
+          <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight ml-2">
+            Black-Scholes Visualizer
+          </h3>
+          <TrendingUpDown />
+        </div>
         <div className="flex flex-row gap-4 justify-around items-center mr-2">
           <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
             Built by Michael Kim
