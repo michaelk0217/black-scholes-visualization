@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Black Scholes Visualizer
 
-## Getting Started
+> [!WARNING]
+> This is a work in progress. The UI is not polished. Not supported on mobile devices.
 
-First, run the development server:
+This is a visualizer for the Black Scholes model. It allows you to visualize the price of a call and put option as a function of the spot price and volatility.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Black Scholes Formula
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Black Scholes formula for a call option is:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+$C(S,t) = N(d_1)S - N(d_2)Ke^{-r(T-t)}$
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+where:
 
-## Learn More
+- $d_1 = \frac{ln(\frac{S}{K})+(r+\frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}}$
+- $d_2 = d_1 - \sigma \sqrt{T-t}$
 
-To learn more about Next.js, take a look at the following resources:
+The Black Scholes formula for a put option is:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+$P(S,t) = N(-d_2)Ke^{-r(T-t)} - N(-d_1)S$
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Parameters
 
-## Deploy on Vercel
+- $S$: The current stock price (spot price)
+- $K$: The strike price of the option
+- $T-t$: The time to expiration in years
+- $r$: The risk-free interest rate
+- $\sigma$: The volatility of the stock's returns
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The spot price is the current market price of the underlying asset. The strike price is the price at which the option contract can be exercised. The time to expiration is the amount of time until the option expires. The risk-free rate is usually taken to be the yield on a U.S. government security with maturity closest to the option expiry. The volatility measures the standard deviation of the stock's returns.
